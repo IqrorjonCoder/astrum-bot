@@ -9,6 +9,12 @@ def see_progress(update, context):
     chat_id = update.message.chat_id
 
     if chat_id in np.array(pd.read_sql("SELECT chat_id FROM users", sqlite3.connect("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db")).values).flatten():
-        update.message.reply_text(f"islomov iqrorjon 2005.08.24 *{chat_id}*", parse_mode="Markdown", reply_markup=buttons.user_buttons)
+        data = pd.read_sql(f"SELECT qwasar_username FROM users WHERE chat_id={chat_id}", sqlite3.connect("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db"))['qwasar_username'][0]
+        update.message.reply_text(data)
+
+        df = pd.read_csv("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/data.csv")
+        df = df[df['username'] == f"{data}"].values.flatten()[-1]
+        update.message.reply_text(df)
+
     else:
         update.message.reply_text("*Siz boshqa akkountdan foydalanyapsiz. Shuning uchun qayta tizimga kiring !*", parse_mode="Markdown", reply_markup=buttons.registration_button)
