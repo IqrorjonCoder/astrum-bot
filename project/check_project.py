@@ -13,7 +13,7 @@ def check_project(update, context):
         update.message.reply_text("✅ Tekshirildi ✅")
         username = [i.split(': ') for i in update.message.reply_to_message.caption.split("\n")][-2][-1]
 
-        connection = sqlite3.connect("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db")
+        connection = sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db")
         id = pd.read_sql(f"SELECT chat_id FROM users WHERE qwasar_username='{username}'", connection)['chat_id'][0]
 
         context.bot.sendDocument(

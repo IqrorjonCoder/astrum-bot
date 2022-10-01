@@ -19,7 +19,7 @@ def start_sign_in(update, context):
 def username(update, context):
     message = update.message.text
 
-    if message in np.array(pd.read_sql("""SELECT qwasar_username FROM users""", sqlite3.connect("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db"))).flatten():
+    if message in np.array(pd.read_sql("""SELECT qwasar_username FROM users""", sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db"))).flatten():
         context.user_data['qwasar_username'] = message
         update.message.reply_text("*Parolingizni kiriting :*", parse_mode="Markdown")
         return states["password"]
@@ -30,7 +30,7 @@ def username(update, context):
 
 def submit(update, context):
     message = update.message.text
-    if message == pd.read_sql(f"SELECT parol FROM users WHERE qwasar_username='{context.user_data['qwasar_username']}'", sqlite3.connect("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db"))['parol'][0]:
+    if message == pd.read_sql(f"SELECT parol FROM users WHERE qwasar_username='{context.user_data['qwasar_username']}'", sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db"))['parol'][0]:
 
         context.user_data['tme_username'] = update.message.from_user.username
         if context.user_data['tme_username'] == None:

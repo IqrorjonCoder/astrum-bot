@@ -11,8 +11,8 @@ br = mechanize.Browser()
 br.set_cookiejar(cj)
 br.open("https://casapp.us.qwasar.io/login?service=https%3A%2F%2Fupskill.us.qwasar.io%2Fusers%2Fservice", timeout=10)
 br.select_form(nr=0)
-br.form['username'] = 'jas.884@mail.ru'
-br.form['password'] = 'jasur2171517'
+br.form['username'] = 'islomoviqrorjon15@gmail.com'
+br.form['password'] = 'Iqror2005...'
 br.submit()
 
 
@@ -70,6 +70,7 @@ def get_data_from_qwasar(usernames, file_path):
             pass
 
         print(counter, i)
+        print(student_data, "\n\n\n")
 
         old_df = pd.read_csv(f"{file_path}")
 
@@ -79,12 +80,12 @@ def get_data_from_qwasar(usernames, file_path):
         student_data = ""
         counter += 1
 
-        if counter == 20:
-            break
+        # if counter == 20:
+        #     break
 
 def main():
-    usernames = np.load("C:/Users/Student/PycharmProjects/astrummentors/astrummentor/datas/students-usernames.npz")['usernames']
-    file_path = "C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/data.csv"
+    usernames = np.load("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/datas/students-usernames.npz")['usernames']
+    file_path = "C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/data.csv"
     pd.DataFrame({'username': [], 'data': []}).to_csv(f"{file_path}", index=False)
     get_data_from_qwasar(usernames, file_path)
 

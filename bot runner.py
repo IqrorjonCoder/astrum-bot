@@ -12,7 +12,7 @@ from project import check_project
 
 def start(update, context):
     if update.message.chat_id in np.array(pd.read_sql("""SELECT chat_id FROM users""", sqlite3.connect(
-            "C:/Users/Student/PycharmProjects/astrummentors/astrummentor/database/user_datas.db"))).flatten():
+            "C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db"))).flatten():
         update.message.reply_text("*Siz allaqachon ro'yhatdan o'tgansiz*", parse_mode="Markdown",
                                   reply_markup=buttons.user_buttons)
     else:
@@ -66,7 +66,7 @@ def runner():
         fallbacks=[CommandHandler('stop', start)]
     ))
 
-    dispacher.add_handler(MessageHandler(Filters.regex("(#feed.\S.+)"), check_project.check_project))
+    dispacher.add_handler(MessageHandler(Filters.regex("(#feed {1,5}\S.+)"), check_project.check_project))
 
     updater.start_polling()
     updater.idle()
