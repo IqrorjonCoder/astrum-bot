@@ -6,14 +6,19 @@ from buttons import buttons
 
 
 def check_project(update, context):
-
-    if update.message.chat_id in np.array([list(mentors.values())]).flatten():
+    x = list(mentors.values())
+    y = []
+    for i in x:
+        for j in i:
+            y.append(j)
+    y = np.array(y)
+    if update.message.chat_id in y:
 
         message = update.message.text
         update.message.reply_text("✅ Tekshirildi ✅")
         username = [i.split(': ') for i in update.message.reply_to_message.caption.split("\n")][-2][-1]
 
-        connection = sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db")
+        connection = sqlite3.connect("/home/iqrorjon/PycharmProjects/astrum-bot/database/user_datas.db")
         id = pd.read_sql(f"SELECT chat_id FROM users WHERE qwasar_username='{username}'", connection)['chat_id'][0]
 
         context.bot.sendDocument(

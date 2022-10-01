@@ -25,13 +25,13 @@ def start_registration(update, context):
 
 
 def username(update, context):
-    connection = sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db")
+    connection = sqlite3.connect("/home/iqrorjon/PycharmProjects/astrum-bot/database/user_datas.db")
     message = update.message.text
 
     if message in np.array(pd.read_sql("""SELECT qwasar_username FROM users""", connection)).flatten():
         update.message.reply_text("*Siz allaqachon ro'yxatdan o'tgansiz !*", parse_mode="Markdown", reply_markup=buttons.registration_button)
         return ConversationHandler.END
-    elif message in np.load('C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/datas/students-usernames.npz')[
+    elif message in np.load('/home/iqrorjon/PycharmProjects/astrum-bot/datas/students-usernames.npz')[
         'usernames'] and (message in np.array(pd.read_sql("""SELECT qwasar_username FROM users""", connection)).flatten()) == False:
         context.user_data['qwasar_username'] = message
         update.message.reply_text("*Ismingizni kiriting ?*", parse_mode="Markdown")

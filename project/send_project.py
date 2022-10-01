@@ -16,7 +16,7 @@ states = {
 
 def start_sending_project(update, context):
     chat_id = update.message.chat_id
-    if chat_id in np.array(pd.read_sql("SELECT chat_id FROM users", sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db")).values).flatten():
+    if chat_id in np.array(pd.read_sql("SELECT chat_id FROM users", sqlite3.connect("/home/iqrorjon/PycharmProjects/astrum-bot/database/user_datas.db")).values).flatten():
         update.message.reply_text("*Project nomini kiriting :*", parse_mode="Markdown", reply_markup=ReplyKeyboardRemove())
         return states["project_name"]
     else:
@@ -56,7 +56,7 @@ def submit(update, context):
 
         from datas.mentors import mentors
 
-        connection = sqlite3.connect("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db")
+        connection = sqlite3.connect("/home/iqrorjon/PycharmProjects/astrum-bot/database/user_datas.db")
         data = pd.read_sql(f"SELECT * FROM users WHERE chat_id={update.message.chat_id}", connection)
 
         df = pd.read_sql(f"SELECT yonalish FROM users WHERE chat_id={update.message.chat_id}", connection)

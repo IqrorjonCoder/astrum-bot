@@ -13,7 +13,7 @@ def save_usernames():
     data.columns = ['students name', 'students username']
     data = data.dropna()
     usernames = np.array(data['students username'].tolist())
-    np.savez('C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/datas/students-usernames.npz', usernames=usernames)
+    np.savez('/home/iqrorjon/PycharmProjects/astrum-bot/datas/students-usernames.npz', usernames=usernames)
 
 
 save_usernames()

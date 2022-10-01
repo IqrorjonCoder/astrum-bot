@@ -84,8 +84,8 @@ def get_data_from_qwasar(usernames, file_path):
         #     break
 
 def main():
-    usernames = np.load("C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/datas/students-usernames.npz")['usernames']
-    file_path = "C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/data.csv"
+    usernames = np.load("/home/iqrorjon/PycharmProjects/astrum-bot/datas/students-usernames.npz")['usernames']
+    file_path = "/home/iqrorjon/PycharmProjects/astrum-bot/database/data.csv"
     pd.DataFrame({'username': [], 'data': []}).to_csv(f"{file_path}", index=False)
     get_data_from_qwasar(usernames, file_path)
 

@@ -12,7 +12,7 @@ from project import check_project
 
 def start(update, context):
     if update.message.chat_id in np.array(pd.read_sql("""SELECT chat_id FROM users""", sqlite3.connect(
-            "C:/Users/student.ASTRUM-DOMAIN/AppData/IqrorjonCoder/python-projects/astrum-bot/database/user_datas.db"))).flatten():
+            "/home/iqrorjon/PycharmProjects/astrum-bot/database/user_datas.db"))).flatten():
         update.message.reply_text("*Siz allaqachon ro'yhatdan o'tgansiz*", parse_mode="Markdown",
                                   reply_markup=buttons.user_buttons)
     else:
